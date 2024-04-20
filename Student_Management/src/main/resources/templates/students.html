@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- nav -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Student</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" th:href="@{/students}">Home</a>
+        <a class="nav-link" th:href="@{/students/new}">Add_Student</a>
+        <a class="nav-link" href="#">List</a>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- end -->
+
+<!-- list of student -->
+<br>
+
+<table class="table">
+  <thead>
+    <tr class="table-primary">
+    <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">PhoneNo</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="studen:${student}">
+      <th scope="row" th:text="${studen.id}"></th>
+       <td th:text="${studen.name}"></td>
+      <td th:text="${studen.email}"></td>
+      <td th:text="${studen.phoneNo}"></td>
+      <td >
+      <a th:href="@{/students/edit/{id}(id=${studen.id})}" class="btn btn-success">Update</a>
+      <a th:href="@{/students/{id}(id=${studen.id})}"  class="btn btn-danger">Delete</a>
+      
+      </td>
+    
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
